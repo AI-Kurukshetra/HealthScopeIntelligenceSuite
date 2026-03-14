@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { requireAppSession } from "../../lib/auth-guards";
 import { FeedbackBanner } from "../../components/feedback-banner";
 import { getUserFacingMessageFromParam } from "../../lib/user-error-messages";
@@ -78,70 +77,41 @@ export default async function AppHomePage({
       </section>
 
       <section className="rounded-[32px] border border-slate-200/70 bg-white/78 p-8 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur xl:p-10">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-slate-950">
-              Quick actions
-            </h2>
-            <div className="mt-5 space-y-4">
-              <div className="grid gap-1 border-t border-slate-200/70 pt-4 first:border-t-0 first:pt-0 md:grid-cols-[170px_1fr]">
-                <span className="text-sm font-semibold text-slate-500">Dashboard</span>
-                <span className="text-sm leading-6 text-slate-700">
-                  Use the dashboard for executive KPIs across clinical, financial, and operational metrics.
-                </span>
-              </div>
-              <div className="grid gap-1 border-t border-slate-200/70 pt-4 first:border-t-0 first:pt-0 md:grid-cols-[170px_1fr]">
-                <span className="text-sm font-semibold text-slate-500">Analytics view</span>
-                <span className="text-sm leading-6 text-slate-700">
-                  Review clinical, financial, and operational metrics for your organization.
-                </span>
-              </div>
-              <div className="grid gap-1 border-t border-slate-200/70 pt-4 md:grid-cols-[170px_1fr]">
-                <span className="text-sm font-semibold text-slate-500">Switch organization</span>
-                <span className="text-sm leading-6 text-slate-700">
-                  Switch the active organization in the sidebar when you have access to more than one.
-                </span>
-              </div>
-              <div className="grid gap-1 border-t border-slate-200/70 pt-4 md:grid-cols-[170px_1fr]">
-                <span className="text-sm font-semibold text-slate-500">Manage users and roles</span>
-                <span className="text-sm leading-6 text-slate-700">
-                  Edit user display name, role, scope, and suspension status from Admin.
-                </span>
-              </div>
-              <div className="grid gap-1 border-t border-slate-200/70 pt-4 md:grid-cols-[170px_1fr]">
-                <span className="text-sm font-semibold text-slate-500">EHR connections</span>
-                <span className="text-sm leading-6 text-slate-700">
-                  Register EHR endpoints and set sync schedules from Integrations.
-                </span>
-              </div>
+        <div className="max-w-3xl">
+          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-slate-950">
+            Quick actions
+          </h2>
+          <div className="mt-5 space-y-4">
+            <div className="grid gap-1 border-t border-slate-200/70 pt-4 first:border-t-0 first:pt-0 md:grid-cols-[170px_1fr]">
+              <span className="text-sm font-semibold text-slate-500">Dashboard</span>
+              <span className="text-sm leading-6 text-slate-700">
+                Use the dashboard for executive KPIs across clinical, financial, and operational metrics.
+              </span>
             </div>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <Link
-              className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_rgba(16,185,129,0.28)] transition hover:bg-emerald-600"
-              href="/app/dashboard"
-            >
-              Open dashboard
-            </Link>
-            <Link
-              className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_rgba(16,185,129,0.28)] transition hover:bg-emerald-600"
-              href="/app/analytics"
-            >
-              Open analytics
-            </Link>
-            <Link
-              className="inline-flex items-center justify-center rounded-full border border-slate-300/80 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white"
-              href="/app/admin"
-            >
-              Open Admin
-            </Link>
-            <Link
-              className="inline-flex items-center justify-center rounded-full border border-slate-300/80 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white"
-              href="/app/integrations"
-            >
-              Open integrations
-            </Link>
+            <div className="grid gap-1 border-t border-slate-200/70 pt-4 first:border-t-0 first:pt-0 md:grid-cols-[170px_1fr]">
+              <span className="text-sm font-semibold text-slate-500">Analytics view</span>
+              <span className="text-sm leading-6 text-slate-700">
+                Review clinical, financial, and operational metrics for your organization.
+              </span>
+            </div>
+            <div className="grid gap-1 border-t border-slate-200/70 pt-4 md:grid-cols-[170px_1fr]">
+              <span className="text-sm font-semibold text-slate-500">Switch organization</span>
+              <span className="text-sm leading-6 text-slate-700">
+                Switch the active organization in the sidebar when you have access to more than one.
+              </span>
+            </div>
+            <div className="grid gap-1 border-t border-slate-200/70 pt-4 md:grid-cols-[170px_1fr]">
+              <span className="text-sm font-semibold text-slate-500">Manage users and roles</span>
+              <span className="text-sm leading-6 text-slate-700">
+                Edit user display name, role, scope, and suspension status from Admin.
+              </span>
+            </div>
+            <div className="grid gap-1 border-t border-slate-200/70 pt-4 md:grid-cols-[170px_1fr]">
+              <span className="text-sm font-semibold text-slate-500">EHR connections</span>
+              <span className="text-sm leading-6 text-slate-700">
+                Register EHR endpoints and set sync schedules from Integrations.
+              </span>
+            </div>
           </div>
         </div>
       </section>

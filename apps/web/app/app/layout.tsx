@@ -25,9 +25,9 @@ export default async function AppLayout({
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-4 py-6 sm:px-6 lg:px-10">
-      <div className="grid gap-4 xl:grid-cols-[290px_minmax(0,1fr)]">
-        <aside className="h-fit rounded-[24px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.10)] backdrop-blur xl:sticky xl:top-6">
-          <div className="space-y-6">
+      <div className="grid gap-4 xl:grid-cols-[290px_minmax(0,1fr)] xl:items-stretch">
+        <aside className="flex flex-col rounded-[24px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.10)] backdrop-blur xl:min-h-0">
+          <div className="flex flex-1 flex-col gap-6">
             <div className="space-y-3">
               <div className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
                 HealthScope
@@ -91,7 +91,9 @@ export default async function AppLayout({
               </p>
             </div>
 
-            <SignOutButton />
+            <div className="mt-auto pt-4">
+              <SignOutButton />
+            </div>
           </div>
         </aside>
 
