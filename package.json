@@ -1,0 +1,11 @@
+{
+  "name": "healthscope-analytics-suite",
+  "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "lint": "echo \"Add lint tasks per app/package\"",
+    "test": "echo \"Add test tasks per app/package\"",
+    "build": "echo \"Add build tasks per app/package\""
+  }
+}
+
