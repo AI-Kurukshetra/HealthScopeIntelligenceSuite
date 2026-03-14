@@ -1,0 +1,16 @@
+{
+  "name": "@healthscope/auth",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./browser": "./src/browser.ts",
+    "./server": "./src/server.ts",
+    "./supabase": "./src/supabase.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.49.4",
+    "next": "^14.2.25"
+  }
+}

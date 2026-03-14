@@ -6,7 +6,7 @@
 
 - Monorepo scaffold and workspace config
 - Next.js 14 application shell and API boundary
-- Supabase schema conventions and tenant-aware auth foundation
+- Supabase cloud project linkage, schema conventions, and tenant-aware auth foundation
 - RBAC model, audit framework, and baseline environment config
 - Core documentation package
 
@@ -21,6 +21,7 @@
 **Risks**
 
 - Weak early decisions around tenancy or auth will create expensive rewrites
+- Remote database changes require stronger migration discipline because there is no local Supabase reset workflow
 
 ## Phase 2: Data Integration
 
@@ -133,4 +134,3 @@
 **Risks**
 
 - Bias, explainability gaps, regulatory scrutiny, and model operations burden
-
