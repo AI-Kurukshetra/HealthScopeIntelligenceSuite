@@ -1,0 +1,34 @@
+# Testing Guidelines (Current State)
+
+- **Stack targets**: Next.js 14 app router, Supabase Cloud (no local Docker). Use `pnpm --filter @healthscope/web build` for the web surface; lint is not wired yet.
+- **Env**: load `.env.local` at repo root. Required for web: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. No `supabase start` or local db; always link to the hosted project (`supabase login`, `supabase link --project-ref <PROJECT_REF>`).
+- **Migrations**: apply with `supabase db push` after linking. Pending migrations include core warehouse tables and integration sync job/checkpoint tables.
+- **Demo seed**: optional seed data at `supabase/seeds/demo_seed.sql` (tenants, orgs, facilities, users, memberships, patients, providers, encounters, claims, quality measures, data sources, sync jobs). Run via Supabase SQL editor or `supabase db execute --file supabase/seeds/demo_seed.sql` after migrations.
+- **What to exercise manually now**
+  - Sign-in/sign-up UI: email/password only; Google is commented out.
+  - Tenant switching: sidebar switcher; verify `/api/v1/auth/session` reflects the active tenant.
+  - Tenant admin: create org/facility, invite membership, edit membership (role/status/scope), audit route `/api/v1/compliance/audit-events`.
+  - Integrations: register FHIR source, edit source metadata, update status; verify records and audit events.
+  - Analytics: `/app/analytics` and `/api/v1/analytics/overview` require a populated tenant; with empty warehouse tables you’ll see zeros by design.
+- **Known gaps (not yet testable)**
+  - No ingestion into warehouse tables; analytics will stay empty until FHIR ingest exists.
+  - No background job runner; sync job/ checkpoint tables are schema only.
+  - No automated test suite; no CI config; no lint rules.
+  - Auth extras (password reset, email confirmation UX, SSO) deferred.
+- **Smoke-test checklist**
+  - `pnpm --filter @healthscope/web build` (should pass).
+  - `supabase db push` (after linking) to ensure migrations apply on cloud project.
+  - Hit `/api/v1/health` for liveness; `/api/v1/auth/session` for context; `/api/v1/analytics/overview` for data shape.
+  - Create/modify a FHIR source and see audit entries appear.
+  - Switch tenants and verify analytics/organizations reflect the active tenant.
+- **Data inspection**
+  - Useful SQL quick checks (Supabase SQL editor):
+    - `select * from organizations order by created_at desc limit 20;`
+    - `select * from data_sources order by created_at desc limit 20;`
+    - `select * from integration_sync_jobs order by created_at desc limit 20;`
+    - `select * from integration_sync_checkpoints;`
+    - `select * from analytics_metric_snapshots order by created_at desc limit 20;`
+- **When adding code tests later**
+  - Prefer integration tests that hit the REST handlers with tenant-scoped sessions.
+  - Use seeded tenants/users in the hosted Supabase dev project; avoid per-test schema changes.
+  - Keep PHI out of logs/fixtures; use generated demo data only.

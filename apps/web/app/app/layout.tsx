@@ -6,6 +6,7 @@ import { switchTenantAction } from "./actions";
 
 const navItems = [
   { href: "/app", label: "Overview" },
+  { href: "/app/analytics", label: "Analytics" },
   { href: "/app/admin", label: "Tenant Admin" },
   { href: "/app/integrations", label: "Integrations" },
   { href: "/api/v1/auth/session", label: "Session API" },

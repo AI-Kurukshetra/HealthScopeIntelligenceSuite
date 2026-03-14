@@ -51,6 +51,7 @@ type DataSourceRow = {
   last_sync_at: string | null;
   status: string;
   created_at: string;
+  updated_at: string;
 };
 
 export type AdminOverview = {
@@ -112,7 +113,7 @@ export async function getAdminOverview(context: SessionContext): Promise<AdminOv
     client
       .from("data_sources")
       .select(
-        "id, tenant_id, organization_id, source_type, name, base_url, auth_type, sync_frequency, last_sync_at, status, created_at"
+        "id, tenant_id, organization_id, source_type, name, base_url, auth_type, sync_frequency, last_sync_at, status, created_at, updated_at"
       )
       .eq("tenant_id", tenantId)
       .order("created_at", { ascending: false })

@@ -13,6 +13,10 @@ export const CORE_API_ROUTES = [
     summary: "Resolve user, tenant, and role context."
   },
   {
+    path: "/api/v1/analytics/overview",
+    summary: "Return tenant-scoped clinical, financial, and operational summary metrics."
+  },
+  {
     path: "/api/v1/organizations",
     summary: "List tenant organizations and core metadata."
   },
@@ -35,4 +39,3 @@ export const organizationSeed = [
     facilities: 1
   }
 ];
-
