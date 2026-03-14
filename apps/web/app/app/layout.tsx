@@ -8,10 +8,10 @@ const navItems = [
   { href: "/app", label: "Overview" },
   { href: "/app/dashboard", label: "Dashboard" },
   { href: "/app/analytics", label: "Analytics" },
-  { href: "/app/admin", label: "Tenant Admin" },
+  { href: "/app/admin", label: "Admin" },
   { href: "/app/integrations", label: "Integrations" },
-  { href: "/api/v1/auth/session", label: "Session API" },
-  { href: "/api/v1/compliance/audit-events", label: "Audit API" }
+  { href: "/api/v1/auth/session", label: "Session" },
+  { href: "/api/v1/compliance/audit-events", label: "Audit events" }
 ];
 
 export default async function AppLayout({
@@ -34,12 +34,12 @@ export default async function AppLayout({
               </div>
               <div>
                 <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
-                  Operations Console
+                  HealthScope Analytics
                 </h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
                   Signed in as {session.context.actor.email}
                 </p>
-                <p className="text-sm font-medium text-slate-500">Tenant: {tenantId}</p>
+                <p className="text-sm font-medium text-slate-500">Workspace: {tenantId}</p>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ export default async function AppLayout({
               <form action={switchTenantAction} className="space-y-3 rounded-3xl border border-slate-200/80 bg-slate-50/80 p-4">
                 <label className="block space-y-2">
                   <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    Active tenant
+                    Organization
                   </span>
                   <select
                     className="w-full rounded-2xl border border-slate-200/80 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
@@ -65,7 +65,7 @@ export default async function AppLayout({
                   className="inline-flex w-full items-center justify-center rounded-full border border-slate-300/80 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white"
                   type="submit"
                 >
-                  Switch tenant
+                  Switch organization
                 </button>
               </form>
             ) : null}
@@ -84,11 +84,10 @@ export default async function AppLayout({
 
             <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                Workspace policy
+                Access
               </p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Tenant context is resolved server-side and reused across admin, integrations, and
-                compliance routes.
+                Your access is based on your organization and role.
               </p>
             </div>
 
