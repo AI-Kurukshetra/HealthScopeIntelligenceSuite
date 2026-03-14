@@ -54,7 +54,7 @@ function requireAdminClient() {
 }
 
 function getTenantId(context: SessionContext) {
-  const tenantId = context.activeTenant?.tenantId;
+  const tenantId = context.activeTenant?.tenantId ?? context.memberships[0]?.tenantId;
 
   if (!tenantId) {
     throw new Error("Active tenant context is required.");

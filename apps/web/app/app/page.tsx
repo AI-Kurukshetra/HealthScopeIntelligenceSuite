@@ -95,6 +95,12 @@ export default async function AppHomePage({
             </h2>
             <div className="mt-5 space-y-4">
               <div className="grid gap-1 border-t border-slate-200/70 pt-4 first:border-t-0 first:pt-0 md:grid-cols-[170px_1fr]">
+                <span className="text-sm font-semibold text-slate-500">Dashboard</span>
+                <span className="text-sm leading-6 text-slate-700">
+                  Use the new dashboard for executive KPIs across clinical, financial, and operational metrics.
+                </span>
+              </div>
+              <div className="grid gap-1 border-t border-slate-200/70 pt-4 first:border-t-0 first:pt-0 md:grid-cols-[170px_1fr]">
                 <span className="text-sm font-semibold text-slate-500">Analytics view</span>
                 <span className="text-sm leading-6 text-slate-700">
                   Review the first warehouse-backed tenant metrics for clinical, financial, and operational activity.
@@ -122,6 +128,12 @@ export default async function AppHomePage({
           </div>
 
           <div className="flex flex-wrap gap-3">
+            <Link
+              className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_rgba(16,185,129,0.28)] transition hover:bg-emerald-600"
+              href="/app/dashboard"
+            >
+              Open dashboard
+            </Link>
             <Link
               className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_rgba(16,185,129,0.28)] transition hover:bg-emerald-600"
               href="/app/analytics"

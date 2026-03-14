@@ -1,33 +1,6 @@
 import { createSupabaseAdminClient } from "@healthscope/auth/supabase";
 import type { SessionContext } from "@healthscope/auth";
-
-async function snapshotMetric(tenantId: string, metricKey: string, metricGroup: string, label: string, value: number) {
-  const client = createSupabaseAdminClient();
-  if (!client) throw new Error("Supabase service role environment is not configured.");
-  const now = new Date();
-  const periodEnd = now.toISOString();
-  const periodStart = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
-
-  const { error } = await client.from("analytics_metric_snapshots").upsert(
-    {
-      tenant_id: tenantId,
-      organization_id: null,
-      facility_id: null,
-      metric_key: metricKey,
-      metric_group: metricGroup,
-      metric_label: label,
-      period_start: periodStart,
-      period_end: periodEnd,
-      value_numeric: value,
-      dimensions: {}
-    },
-    {
-      onConflict: "tenant_id,organization_id,facility_id,metric_key,period_start,period_end"
-    }
-  );
-
-  if (error) throw new Error(error.message);
-}
+import { upsertSnapshot } from "./snapshots";
 
 async function fetchQueuedJobs(tenantId: string) {
   const client = createSupabaseAdminClient();
@@ -150,14 +123,29 @@ async function insertDemoData(tenantId: string) {
       .eq("tenant_id", tenantId)
   ]);
 
-  await snapshotMetric(tenantId, "patients.total", "clinical", "Total patients", patientCount ?? 0);
-  await snapshotMetric(
+  const now = new Date();
+  const periodEnd = now.toISOString();
+  const periodStart = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+
+  await upsertSnapshot({
     tenantId,
-    "encounters.total",
-    "clinical",
-    "Total encounters",
-    encounterCount ?? 0
-  );
+    metricKey: "patients.total",
+    metricGroup: "clinical",
+    label: "Total patients",
+    periodStart,
+    periodEnd,
+    value: patientCount ?? 0
+  });
+
+  await upsertSnapshot({
+    tenantId,
+    metricKey: "encounters.total",
+    metricGroup: "clinical",
+    label: "Total encounters",
+    periodStart,
+    periodEnd,
+    value: encounterCount ?? 0
+  });
 }
 
 export async function processQueuedJobs(context: SessionContext) {

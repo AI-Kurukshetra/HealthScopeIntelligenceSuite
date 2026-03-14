@@ -55,10 +55,28 @@ export default async function AnalyticsPage({
   const days = Number(searchParams?.days ?? "30");
   const organizationId = searchParams?.organizationId ?? null;
   const facilityId = searchParams?.facilityId ?? null;
-  const [overview, referenceData] = await Promise.all([
-    getAnalyticsOverview(session.context, { days, organizationId, facilityId }),
-    getTenantReferenceData(session.context)
-  ]);
+  let overview;
+  let referenceData;
+
+  try {
+    [overview, referenceData] = await Promise.all([
+      getAnalyticsOverview(session.context, { days, organizationId, facilityId }),
+      getTenantReferenceData(session.context)
+    ]);
+  } catch (error) {
+    return (
+      <section className="rounded-[32px] border border-amber-200 bg-amber-50/80 p-6 shadow-sm sm:p-7 md:p-8">
+        <h1 className="text-2xl font-semibold tracking-[-0.03em] text-amber-900">Analytics unavailable</h1>
+        <p className="mt-3 text-sm leading-6 text-amber-800">
+          {error instanceof Error ? error.message : "Unable to load analytics for this tenant right now."}
+        </p>
+        <p className="mt-4 text-sm text-amber-800">
+          Try switching tenants in the sidebar or reloading after a few moments. If the issue persists,
+          confirm the active tenant has data and that your session includes tenant access.
+        </p>
+      </section>
+    );
+  }
 
   return (
     <>

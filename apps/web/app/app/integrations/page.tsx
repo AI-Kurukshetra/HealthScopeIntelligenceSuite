@@ -91,7 +91,7 @@ export default async function IntegrationsPage({
 
   return (
     <>
-      <section className="rounded-[32px] border border-slate-200/70 bg-white/78 p-8 shadow-[0_24px_90px_rgba(15,23,42,0.10)] backdrop-blur xl:p-10">
+      <section className="rounded-[32px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_24px_90px_rgba(15,23,42,0.10)] backdrop-blur sm:p-6 md:p-8 xl:p-10">
         <div className="space-y-6">
           <div className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
             Integrations
@@ -116,8 +116,8 @@ export default async function IntegrationsPage({
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="grid gap-5 sm:gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
             Register FHIR source
           </h2>
@@ -178,7 +178,7 @@ export default async function IntegrationsPage({
           </form>
         </div>
 
-        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
             Integration posture
           </h2>
@@ -218,7 +218,7 @@ export default async function IntegrationsPage({
         </div>
       </section>
 
-      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
         <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
           Registered source systems
         </h2>
@@ -355,7 +355,7 @@ export default async function IntegrationsPage({
         ) : null}
       </section>
 
-      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
         <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">Source credentials</h2>
         <p className="mt-2 text-sm leading-6 text-slate-600">
           Store connection credentials for each source. Values are tenant-scoped and require admin rights.
@@ -444,7 +444,7 @@ export default async function IntegrationsPage({
         </div>
       </section>
 
-      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">Sync jobs</h2>
@@ -553,7 +553,7 @@ export default async function IntegrationsPage({
         </div>
       </section>
 
-      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
         <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">Job events</h2>
         <p className="mt-2 text-sm leading-6 text-slate-600">
           Recent integration job logs across all sources for the active tenant.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ToastShell } from "../components/toast-shell";
 
 export const metadata: Metadata = {
   title: "HealthScope Analytics Suite",
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ToastShell>{children}</ToastShell>
+      </body>
     </html>
   );
 }

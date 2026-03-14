@@ -12,6 +12,12 @@ export async function requireAppSession() {
   return session;
 }
 
+export function requireServiceKeyPresent() {
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error("Service role key is required for this action.");
+  }
+}
+
 export async function requireTenantAdminSession() {
   const session = await requireAppSession();
 

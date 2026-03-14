@@ -60,13 +60,15 @@ insert into public.patients (id, tenant_id, organization_id, facility_id, extern
 values
   (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '22222222-2222-4222-8222-222222222222', '44444444-4444-4444-8444-444444444444', 'pat-001', 'MRN-1001', 'Jordan', 'Lee', '1985-02-14', 'female', 'active'),
   (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '22222222-2222-4222-8222-222222222222', '44444444-4444-4444-8444-444444444444', 'pat-002', 'MRN-1002', 'Taylor', 'Smith', '1978-08-23', 'male', 'active'),
-  (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '33333333-3333-4333-8333-333333333333', '55555555-5555-4555-8555-555555555555', 'pat-003', 'MRN-2001', 'Riley', 'Patel', '1990-12-05', 'other', 'active');
+  (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '33333333-3333-4333-8333-333333333333', '55555555-5555-4555-8555-555555555555', 'pat-003', 'MRN-2001', 'Riley', 'Patel', '1990-12-05', 'other', 'active')
+on conflict (tenant_id, external_id) do nothing;
 
 -- Providers
 insert into public.providers (id, tenant_id, organization_id, facility_id, external_id, npi, full_name, specialty, status)
 values
   (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '22222222-2222-4222-8222-222222222222', '44444444-4444-4444-8444-444444444444', 'prov-001', '1000000001', 'Morgan Alvarez, MD', 'Hospitalist', 'active'),
-  (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '33333333-3333-4333-8333-333333333333', '55555555-5555-4555-8555-555555555555', 'prov-002', '1000000002', 'Casey Young, NP', 'Primary Care', 'active');
+  (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '33333333-3333-4333-8333-333333333333', '55555555-5555-4555-8555-555555555555', 'prov-002', '1000000002', 'Casey Young, NP', 'Primary Care', 'active')
+on conflict (tenant_id, external_id) do nothing;
 
 -- Encounters
 insert into public.clinical_encounters (id, tenant_id, organization_id, facility_id, patient_id, provider_id, external_id, encounter_type, status, encounter_at, discharged_at, length_of_stay_days, primary_diagnosis_code)
@@ -86,7 +88,8 @@ select
   'I10'
 from public.patients p1, public.providers pr1
 where p1.mrn = 'MRN-1001' and pr1.npi = '1000000001'
-limit 1;
+limit 1
+on conflict (tenant_id, external_id) do nothing;
 
 insert into public.clinical_encounters (id, tenant_id, organization_id, facility_id, patient_id, provider_id, external_id, encounter_type, status, encounter_at, discharged_at, length_of_stay_days, primary_diagnosis_code)
 select
@@ -105,7 +108,8 @@ select
   'E11.9'
 from public.patients p2, public.providers pr2
 where p2.mrn = 'MRN-2001' and pr2.npi = '1000000002'
-limit 1;
+limit 1
+on conflict (tenant_id, external_id) do nothing;
 
 -- Claims
 insert into public.insurance_claims (id, tenant_id, organization_id, facility_id, encounter_id, patient_id, payer_name, claim_status, billed_amount, allowed_amount, paid_amount, submitted_at)

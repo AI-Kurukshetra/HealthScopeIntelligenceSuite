@@ -89,7 +89,7 @@ export default async function TenantAdminPage({
 
   return (
     <>
-      <section className="rounded-[32px] border border-slate-200/70 bg-white/78 p-8 shadow-[0_24px_90px_rgba(15,23,42,0.10)] backdrop-blur xl:p-10">
+      <section className="rounded-[24px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.10)] backdrop-blur sm:p-6 md:p-8 xl:p-10">
         <div className="space-y-6">
           <div className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
             Tenant admin
@@ -150,8 +150,8 @@ export default async function TenantAdminPage({
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-2">
-        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="grid gap-5 sm:gap-6 xl:grid-cols-2">
+        <div className="rounded-[24px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
             Create organization
           </h2>
@@ -181,7 +181,7 @@ export default async function TenantAdminPage({
           </form>
         </div>
 
-        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+        <div className="rounded-[24px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
             Create facility
           </h2>
@@ -234,7 +234,7 @@ export default async function TenantAdminPage({
         </div>
       </section>
 
-      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
             Invite user and assign membership
@@ -302,8 +302,8 @@ export default async function TenantAdminPage({
         </form>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-2">
-        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="grid gap-5 sm:gap-6 xl:grid-cols-2">
+        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">Organizations</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">
             Organization records currently available for the active tenant.
@@ -317,7 +317,7 @@ export default async function TenantAdminPage({
           </div>
         </div>
 
-        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+        <div className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">Facilities</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">
             Facility records and their current organization alignment.
@@ -332,7 +332,7 @@ export default async function TenantAdminPage({
         </div>
       </section>
 
-      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+      <section className="rounded-[30px] border border-slate-200/70 bg-white/78 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur sm:p-6 md:p-7">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-950">
             Membership access
